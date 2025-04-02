@@ -45,7 +45,7 @@ spec:
       - name: fetch-repository
         taskRef:
           name: git-clone
-          kind: ClusterTask
+          kind: ClusterResolver
         workspaces:
           - name: output
             workspace: source
