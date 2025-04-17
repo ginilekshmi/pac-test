@@ -80,9 +80,6 @@ spec:
               workingDir: $(workspaces.source.path)
               script: |
                 exit 0
-            - script: |
-                echo "$(params.image-url)"
-                exit 0 
   workspaces:
   - name: source
     volumeClaimTemplate:
