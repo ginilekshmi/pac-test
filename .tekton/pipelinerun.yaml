@@ -82,7 +82,7 @@ spec:
               script: |
                 exit 0
             - script: |
-                echo "$(params.url)"
+                echo "$(params.image-url)"
                 exit 0 
   workspaces:
   - name: source
