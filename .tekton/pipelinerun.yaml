@@ -81,6 +81,9 @@ spec:
               workingDir: $(workspaces.source.path)
               script: |
                 exit 0
+            - script: |
+                echo "$(params.url)"
+                exit 0 
   workspaces:
   - name: source
     volumeClaimTemplate:
