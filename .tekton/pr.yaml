@@ -7,6 +7,10 @@ metadata:
     pipelinesascode.tekton.dev/on-cel-expression: |
       event == "pull_request" && target_branch == "main"
     # pipelinesascode.tekton.dev/cancel-in-progress: "true"
+    # this can be an array too, i.e: [pull_request, push]
+    pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
+    # The branch or tag we are targeting (ie: main, refs/tags/*)
+    pipelinesascode.tekton.dev/on-target-branch: "[main, test]"
 spec:
   params:
     - name: url
