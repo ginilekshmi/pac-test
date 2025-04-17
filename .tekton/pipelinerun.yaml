@@ -80,7 +80,7 @@ spec:
               workingDir: $(workspaces.source.path)
               script: |
                 echo "$(params.url)"
-                sleep 10
+                sleep 100
                 exit 0
   workspaces:
   - name: source
