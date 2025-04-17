@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1
+kind: PipelineRun
+metadata:
+  name: simple-push-pr
+  annotations:
+    # pipelinesascode.tekton.dev/on-comment: "^/(help|(assign|unassign|label|unlabel)[ ].*)"
+    pipelinesascode.tekton.dev/on-cel-expression: |
+      event == "pull_request" && target_branch == "[main, test]"
+    # pipelinesascode.tekton.dev/cancel-in-progress: "true"
+    # this can be an array too, i.e: [pull_request, push]
+    pipelinesascode.tekton.dev/on-event: "[pull_request, push]"
+    # The branch or tag we are targeting (ie: main, refs/tags/*)
+    pipelinesascode.tekton.dev/on-target-branch: "[main, test]"
+spec:
+  params:
+    - name: url
+      value: 'image-registry.openshift-image-registry.svc:5000/{{target_namespace}}/httpd:{{tag}}'
+  pipelineSpec:
+    tasks:
+      - name: task
+        displayName: This is a task test
+        taskSpec:
+          steps:
+            - name: task-step
+              image: registry.access.redhat.com/ubi9/ubi-micro
+              script: |
+                echo "$(params.url)"
+                exit 0  
