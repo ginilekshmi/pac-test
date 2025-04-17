@@ -14,7 +14,7 @@ spec:
   pipelineSpec:
     tasks:
       - name: task
-        displayName: This is a task
+        displayName: This is a task test
         taskSpec:
           steps:
             - name: task-step
